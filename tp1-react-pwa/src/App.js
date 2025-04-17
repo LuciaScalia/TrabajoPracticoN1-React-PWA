@@ -1,5 +1,7 @@
 //import Button from './components/Button/Button.jsx';
+//useEffect
 import TarjetaPeliSerie from './components/TarjetaPeliSerie/TarjetaPeliSerie.jsx';
+import {useState} from "react";
 import './App.css';
 
 const pelicula1 = {
@@ -23,14 +25,18 @@ const pelicula2 = {
   estadoDeVista:false
 }
 
-const tarjetasPeliSerie = [pelicula1, pelicula2];
-
 function App() {
+  const [tarjetas, setTarjetas] = useState([pelicula1, pelicula2]);
+
+  const eliminarTarjeta = (titulo, director) => {
+    setTarjetas(tarjetas.filter((tarjeta) => tarjeta.titulo !== titulo && tarjeta.director !== director));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          {tarjetasPeliSerie.map((tarjeta)=> {
+          {tarjetas.map((tarjeta)=> {
             return <TarjetaPeliSerie posterUrl={tarjeta.posterUrl}
                                      titulo={tarjeta.titulo}
                                      director={tarjeta.director}
@@ -39,6 +45,7 @@ function App() {
                                      rating={tarjeta.rating}
                                      tipo={tarjeta.tipo}
                                      estadoDeVista={tarjeta.estadoDeVista}
+                                     eliminarTarjeta={eliminarTarjeta}
             />
           })}
         </div>

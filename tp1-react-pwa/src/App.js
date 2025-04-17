@@ -1,22 +1,22 @@
-import logo from './logo.svg';
+import Button from './components/Button/Button.jsx';
+import Tarjeta from './components/Tarjeta/Tarjeta.jsx';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div> {/*div donde tienen que aparecer las pelis/series*/}
+          <Tarjeta
+          fotoUrl={"https://pics.filmaffinity.com/MaXXXine-184829301-large.jpg"}
+          titulo={"MaXXXine"}
+          director={"Lucia"}
+          anio={2015}
+          genero={"Terror"}
+          rating={4}
+          tipo={"Pelicula"}/>
+        </div>
+        <Button texto="Aceptar"/>
       </header>
     </div>
   );

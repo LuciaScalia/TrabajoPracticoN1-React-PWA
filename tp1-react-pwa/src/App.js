@@ -32,10 +32,12 @@ function App() {
   const [genero, setGenero] = useState("Todos");
   const [orden, setOrden] = useState("Anio");
   const [ascdesc, setAscDesc] = useState("Ascendente");
+  const [busqueda, setBusqueda] = useState("");
 
   const tarjetasFiltroOrden = tarjetas.filter((tarjeta)=>
   (tipo === "Todos" || tarjeta.tipo === tipo)&&
-  (genero ==="Todos" || tarjeta.genero === genero)
+  (genero ==="Todos" || tarjeta.genero === genero)&&
+  (tarjeta.titulo.toLocaleLowerCase().includes(busqueda.toLocaleLowerCase()) || tarjeta.director.toLocaleLowerCase().includes(busqueda.toLocaleLowerCase()))
   ).sort((a, b)=>
     orden ==="Anio"
     ? (ascdesc === "Ascendente"? a.anio -b.anio : b.anio - a.anio)
@@ -50,6 +52,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Filtre tipo={tipo} setTipo={setTipo} genero={genero} setGenero={setGenero} orden={orden} setOrden={setOrden} ascdesc={ascdesc} setAscDesc={setAscDesc}/>
+        <input type='text' placeholder='busqueda' value={busqueda} onChange={(e) => setBusqueda(e.target.value)}></input>
         <div>
           {tarjetasFiltroOrden.map((tarjeta)=> ( 
             <TarjetaPeliSerie     key={tarjeta.titulo} 

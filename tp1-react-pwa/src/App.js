@@ -30,6 +30,17 @@ function App() {
   const [tarjetas, setTarjetas] = useState([pelicula1, pelicula2]);
   const [tipo, setTipo] = useState ("Todos");
   const [genero, setGenero] = useState("Todos");
+  const [orden, setOrden] = useState("Anio");
+  const [ascdesc, setAscDesc] = useState("Ascendente");
+
+  const tarjetasFiltroOrden = tarjetas.filter((tarjeta)=>
+  (tipo === "Todos" || tarjeta.tipo === tipo)&&
+  (genero ==="Todos" || tarjeta.genero === genero)
+  ).sort((a, b)=>
+    orden ==="Anio"
+    ? (ascdesc === "Ascendente"? a.anio -b.anio : b.anio - a.anio)
+    : (ascdesc === "Ascendente"? a.rating - b.rating : b.rating - a.rating)
+  );
 
   const eliminarTarjeta = (titulo, director) => {
     setTarjetas(tarjetas.filter((tarjeta) => tarjeta.titulo !== titulo && tarjeta.director !== director));
@@ -38,11 +49,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Filtre tipo={tipo} setTipo={setTipo} genero={genero} setGenero={setGenero}/>
+        <Filtre tipo={tipo} setTipo={setTipo} genero={genero} setGenero={setGenero} orden={orden} setOrden={setOrden} ascdesc={ascdesc} setAscDesc={setAscDesc}/>
         <div>
-          {tarjetas.filter((tarjeta)=> (tipo === "Todos" || tarjeta.tipo === tipo)&&
-          (genero ==="Todos" || tarjeta.genero === genero)
-          ).map((tarjeta)=> ( 
+          {tarjetasFiltroOrden.map((tarjeta)=> ( 
             <TarjetaPeliSerie     key={tarjeta.titulo} 
                                     posterUrl={tarjeta.posterUrl}
                                      titulo={tarjeta.titulo}

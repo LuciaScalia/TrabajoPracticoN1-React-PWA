@@ -1,4 +1,4 @@
-const Filtro = ({
+const Filtre = ({
     genero, setGenero,
     tipo, setTipo,
 
@@ -26,4 +26,4 @@ const Filtro = ({
         </div>
     )
 }
-export default Filtro;
+export default Filtre;

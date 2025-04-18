@@ -1,7 +1,7 @@
 //import Button from './components/Button/Button.jsx';
 //useEffect
 import TarjetaPeliSerie from './components/TarjetaPeliSerie/TarjetaPeliSerie.jsx';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Filtre from './components/Filtre/Filtre.jsx';
 import './App.css';
 
@@ -25,14 +25,32 @@ const pelicula2 = {
   tipo:"Serie",
   estadoDeVista:false
 }
+const pelicula3 = {
+  posterUrl:"https://images.cdn1.buscalibre.com/fit-in/360x360/14/84/14848f6eaee7dc12d16486036f9e9ef4.jpg",
+  titulo:"Zootopia",
+  director:"Rich Moore",
+  anio: 2016,
+  genero:"Comedia",
+  rating:5,
+  tipo:"Pelicula",
+  estadoDeVista:false
+}
 
 function App() {
-  const [tarjetas, setTarjetas] = useState([pelicula1, pelicula2]);
+  const [tarjetas, setTarjetas] = useState(() => {
+    const tarjetasLocal = localStorage.getItem("tarjetas");
+    return tarjetasLocal ? JSON.parse(tarjetasLocal) : [pelicula1,pelicula2,pelicula3];
+  });
+  
   const [tipo, setTipo] = useState ("Todos");
   const [genero, setGenero] = useState("Todos");
   const [orden, setOrden] = useState("Anio");
   const [ascdesc, setAscDesc] = useState("Ascendente");
   const [busqueda, setBusqueda] = useState("");
+
+  useEffect(()=>{
+    localStorage.setItem("tarjetas", JSON.stringify(tarjetas));
+  },[tarjetas]);
 
   const tarjetasFiltroOrden = tarjetas.filter((tarjeta)=>
   (tipo === "Todos" || tarjeta.tipo === tipo)&&

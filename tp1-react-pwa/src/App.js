@@ -2,6 +2,7 @@
 //useEffect
 import TarjetaPeliSerie from './components/TarjetaPeliSerie/TarjetaPeliSerie.jsx';
 import {useState} from "react";
+import Filtro from './components/Filtre/Filtre.jsx';
 import './App.css';
 
 const pelicula1 = {
@@ -21,23 +22,36 @@ const pelicula2 = {
   anio: 2023,
   genero:"Thriller",
   rating:4,
-  tipo:"Pelicula",
+  tipo:"Serie",
   estadoDeVista:false
 }
 
 function App() {
   const [tarjetas, setTarjetas] = useState([pelicula1, pelicula2]);
 
+  const [tipo, setTipo] = useState ("Todos");
+  const [genero, setGenero] = useState("Todos");
+
+  const tarjetasFiltro = tarjetas.filter((tarjeta) =>{
+    return (
+      (tipo === "Todos" || tarjeta.tipo === tipo) && (genero === "Todos" || tarjeta.genero === genero)
+    );
+  });
+
   const eliminarTarjeta = (titulo, director) => {
     setTarjetas(tarjetas.filter((tarjeta) => tarjeta.titulo !== titulo && tarjeta.director !== director));
   };
 
+
   return (
     <div className="App">
       <header className="App-header">
+        <Filtro tipo={tipo} setTipo={setTipo} genero={genero} setGenero={setGenero}/>
         <div>
-          {tarjetas.map((tarjeta)=> {
-            return <TarjetaPeliSerie posterUrl={tarjeta.posterUrl}
+          {tarjetasFiltro.map((tarjeta)=> {
+            return (
+              <TarjetaPeliSerie     key={tarjeta.titulo} 
+                                    posterUrl={tarjeta.posterUrl}
                                      titulo={tarjeta.titulo}
                                      director={tarjeta.director}
                                      anio={tarjeta.anio}
@@ -47,7 +61,9 @@ function App() {
                                      estadoDeVista={tarjeta.estadoDeVista}
                                      eliminarTarjeta={eliminarTarjeta}
             />
+            );
           })}
+   
         </div>
       </header>
     </div>

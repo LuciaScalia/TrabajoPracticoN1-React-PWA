@@ -26,7 +26,7 @@ const Filtre = ({
            
             <label htmlFor="seccionOrden">Ordenar por: </label>
             <select id="seccionOrden" value={orden} onChange={(e)=>{console.log("orden:", e.target.value); setOrden(e.target.value);}}>
-                <option value="Anio">Anio</option>
+                <option value="Anio">Año</option>
                 <option value="Rating">Rating</option>
             </select>
 

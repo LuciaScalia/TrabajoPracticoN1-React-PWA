@@ -62,6 +62,7 @@ function Home({ peliculasIniciales }) {
           <button onClick={() => setMostrarFormulario(!mostrarFormulario)}>Agregar</button>
         </div>
 
+        <br/><label>- Resultados {tarjetasFiltroOrden.length} -</label><br/>
         <div className="tarjetas-grid">
           {tarjetasFiltroOrden.map((tarjeta) => (
             <TarjetaPeliSerie key={tarjeta.id} {...tarjeta} 
@@ -71,14 +72,17 @@ function Home({ peliculasIniciales }) {
             />
           ))}
         </div>
-        {mostrarFormulario && 
-        <ItemForm 
-        agregarTarjeta={agregarTarjeta} 
-        editarTarjeta={editarTarjeta} 
-        tarjetaEditando={tarjetaEditando}
-        mostrarFormularioEnApp={mostrarFormularioEnApp}
-        />
+
+        <div>
+          {mostrarFormulario && 
+          <ItemForm 
+          agregarTarjeta={agregarTarjeta} 
+          editarTarjeta={editarTarjeta} 
+          tarjetaEditando={tarjetaEditando}
+          mostrarFormularioEnApp={mostrarFormularioEnApp}
+          />
         }
+        </div>
       </header>
     </div>
   );

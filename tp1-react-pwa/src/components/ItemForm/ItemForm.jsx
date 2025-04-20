@@ -37,6 +37,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
     genero: 'Todos',
     rating: '',
     tipo: 'Pelicula',
+    estadoDeVista: false
   };
 
   const setValoresVacios = () => {
@@ -50,16 +51,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
     } else {
       agregarTarjeta(formData);
     }
-    setFormData({
-      posterUrl: '',
-      titulo: '',
-      director: '',
-      anio: '',
-      genero: 'Todos',
-      rating: '',
-      tipo: 'Pelicula',
-      estadoDeVista: false
-    });
+    setFormData(formDataVacio);
   };
 
   return (

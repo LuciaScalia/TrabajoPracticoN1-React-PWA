@@ -1,4 +1,4 @@
-import Home from './pages/home/home';
+import Home from './pages/Home/Home';
 import './App.css';
 
 const peliculasIniciales = [

@@ -62,15 +62,16 @@ function Home({ peliculasIniciales }) {
           <button onClick={() => setMostrarFormulario(!mostrarFormulario)}>Agregar</button>
         </div>
 
-        <br/><label>- Resultados {tarjetasFiltroOrden.length} -</label><br/>
+        <br/><label>{tarjetasFiltroOrden.length > 0 ? "- Resultados " + tarjetasFiltroOrden.length + " -" : ""}</label><br/>
+       
         <div className="tarjetas-grid">
-          {tarjetasFiltroOrden.map((tarjeta) => (
-            <TarjetaPeliSerie key={tarjeta.id} {...tarjeta} 
-            eliminarTarjeta={() => eliminarTarjeta(tarjeta.id)} 
+          {tarjetasFiltroOrden.length>0? ( tarjetasFiltroOrden.map((tarjeta) => (
+            <TarjetaPeliSerie key={tarjeta.id} {...tarjeta} eliminarTarjeta={() => eliminarTarjeta(tarjeta.id)} 
             iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
-            mostrarFormularioEnApp={mostrarFormularioEnApp}
-            />
-          ))}
+            mostrarFormularioEnApp={mostrarFormularioEnApp} />
+          ))
+        ):(<p>No se encontraron resultados.</p>
+        )}
         </div>
 
         <div>

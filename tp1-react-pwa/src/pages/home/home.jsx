@@ -16,6 +16,8 @@ function Home({ peliculasIniciales }) {
   const [ascdesc, setAscDesc] = useState("Ascendente");
   const [busqueda, setBusqueda] = useState("");
   const [filtroVista, setFiltroVista] = useState(null);
+  const [tarjetaEditando, setTarjetaEditando] = useState(null);
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("tarjetas", JSON.stringify(tarjetas));
@@ -32,8 +34,20 @@ function Home({ peliculasIniciales }) {
       : (ascdesc === "Ascendente" ? a.rating - b.rating : b.rating - a.rating)
   );
 
+  const mostrarFormularioEnApp = () => { setMostrarFormulario(!mostrarFormulario); }
   const eliminarTarjeta = (id) => setTarjetas(tarjetas.filter((tarjeta) => tarjeta.id !== id));
   const agregarTarjeta = (nuevaTarjeta) => setTarjetas([...tarjetas, { ...nuevaTarjeta, id: tarjetas.length + 1 }]);
+
+  const iniciarEdicionTarjeta = (tarjeta) => {
+    setTarjetaEditando(tarjeta);
+  };
+
+  const editarTarjeta = (tarjetaEditada) => {
+    setTarjetas(tarjetas.map((tarjeta) =>
+      tarjeta.id === tarjetaEditada.id ? tarjetaEditada : tarjeta
+    ));
+    setTarjetaEditando(null);
+  };
 
   return (
     <div className="Home">
@@ -45,14 +59,26 @@ function Home({ peliculasIniciales }) {
           <button onClick={() => setFiltroVista(true)}>Vistas</button>
           <button onClick={() => setFiltroVista(false)}>No vistas</button>
           <button onClick={() => setFiltroVista(null)}>Mostrar todas</button>
+          <button onClick={() => setMostrarFormulario(!mostrarFormulario)}>Agregar</button>
         </div>
 
         <div className="tarjetas-grid">
           {tarjetasFiltroOrden.map((tarjeta) => (
-            <TarjetaPeliSerie key={tarjeta.id} {...tarjeta} eliminarTarjeta={() => eliminarTarjeta(tarjeta.id)} />
+            <TarjetaPeliSerie key={tarjeta.id} {...tarjeta} 
+            eliminarTarjeta={() => eliminarTarjeta(tarjeta.id)} 
+            iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
+            mostrarFormularioEnApp={mostrarFormularioEnApp}
+            />
           ))}
         </div>
-        <ItemForm agregarTarjeta={agregarTarjeta} />
+        {mostrarFormulario && 
+        <ItemForm 
+        agregarTarjeta={agregarTarjeta} 
+        editarTarjeta={editarTarjeta} 
+        tarjetaEditando={tarjetaEditando}
+        mostrarFormularioEnApp={mostrarFormularioEnApp}
+        />
+        }
       </header>
     </div>
   );

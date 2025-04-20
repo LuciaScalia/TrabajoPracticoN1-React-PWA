@@ -1,7 +1,6 @@
 import Home from './pages/home/home';
 import './App.css';
 
-
 const peliculasIniciales = [
   {
     id: 1,
@@ -20,9 +19,9 @@ const peliculasIniciales = [
     titulo: "Monster",
     director: "Hirokazu Koreeda",
     anio: 2023,
-    genero: "Thriller",
+    genero: "Suspenso",
     rating: 4,
-    tipo: "Serie",
+    tipo: "Pelicula",
     estadoDeVista: false,
   },
   {
@@ -39,7 +38,7 @@ const peliculasIniciales = [
 ];
 
 function App() {
-  return <Home peliculasIniciales={peliculasIniciales} />;
+  return <Home peliculasIniciales={peliculasIniciales}/>;
 }
 
 export default App;

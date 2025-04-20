@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function ItemForm({ agregarTarjeta }) {
-  const [formData, setFormData] = useState({
-    posterUrl: '',
-    titulo: '',
-    director: '',
-    anio: '',
-    genero: 'Todos',
-    rating: '',
-    tipo: 'Pelicula', 
-    estadoDeVista: false,
-  });
+function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormularioEnApp }) {
+  const accion = tarjetaEditando ? "Editar" + " " + tarjetaEditando.titulo : "Agregar";
+  const [formData, setFormData] = useState(() => ({
+    posterUrl: tarjetaEditando?.posterUrl || '',
+    titulo: tarjetaEditando?.titulo || '',
+    director: tarjetaEditando?.director || '',
+    anio: tarjetaEditando?.anio || '',
+    genero: tarjetaEditando?.genero || 'Todos',
+    rating: tarjetaEditando?.rating || '',
+    tipo: tarjetaEditando?.tipo || 'Pelicula',
+    estadoDeVista: tarjetaEditando?.estadoDeVista || false,
+  }));
+
+  //Pone los datos de tarjetaEditando
+  useEffect(() => {
+    if (tarjetaEditando) {
+      setFormData(tarjetaEditando);
+    }
+  }, [tarjetaEditando]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +28,28 @@ function ItemForm({ agregarTarjeta }) {
     });
   };
 
+  const formDataVacio =
+  {
+    posterUrl: '',
+    titulo: '',
+    director: '',
+    anio: '',
+    genero: 'Todos',
+    rating: '',
+    tipo: 'Pelicula',
+  };
+
+  const setValoresVacios = () => {
+    editarTarjeta(formDataVacio);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    agregarTarjeta(formData);
+    if (tarjetaEditando) {
+      editarTarjeta(formData);
+    } else {
+      agregarTarjeta(formData);
+    }
     setFormData({
       posterUrl: '',
       titulo: '',
@@ -31,12 +58,13 @@ function ItemForm({ agregarTarjeta }) {
       genero: 'Todos',
       rating: '',
       tipo: 'Pelicula',
-      estadoDeVista: false,
+      estadoDeVista: false
     });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(e) => {handleSubmit(e); mostrarFormularioEnApp();}}>
+      <label>{accion}</label><br/>
       <input name="posterUrl" type="text" placeholder="Poster URL" value={formData.posterUrl} onChange={handleChange} required />
       <input name="titulo" type="text" placeholder="Titulo" value={formData.titulo} onChange={handleChange} required />
       <input name="director" type="text" placeholder="Director" value={formData.director} onChange={handleChange} required />
@@ -65,7 +93,10 @@ function ItemForm({ agregarTarjeta }) {
         Estado de Vista:
         <input name="estadoDeVista" type="checkbox" checked={formData.estadoDeVista} onChange={handleChange} />
       </label>
-      <button type="submit">Agregar</button>
+      <div>
+        <button type="button" onClick={() => {mostrarFormularioEnApp(); setValoresVacios();}}>Cancelar</button>
+        <button type="submit">Confirmar</button>
+      </div>
     </form>
   );
 }

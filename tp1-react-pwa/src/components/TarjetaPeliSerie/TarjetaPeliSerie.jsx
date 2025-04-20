@@ -1,9 +1,13 @@
 import Button from '../button/button';
 import './styles.css';
 
-const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, rating, tipo, estadoDeVista, eliminarTarjeta }) => {
+const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, rating, tipo, estadoDeVista, eliminarTarjeta, iniciarEdicionTarjeta, mostrarFormularioEnApp }) => {
   const eliminar = () => {
     eliminarTarjeta(id);
+  };
+
+  const iniciarEdicion = () => {
+    iniciarEdicionTarjeta({ id, posterUrl, titulo, director, anio, genero, rating, tipo, estadoDeVista });
   };
 
   return (
@@ -17,7 +21,7 @@ const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, ratin
       <p>Tipo: {tipo}</p>
       <p>Estado: {estadoDeVista ? 'Vista' : 'No vista'}</p>
       <div>
-        <Button texto="Editar"/>
+        <Button texto="Editar" onClick={() => { iniciarEdicion(); mostrarFormularioEnApp()}}/>
         <Button texto="Eliminar" onClick={eliminar}/>
       </div>
     </div>

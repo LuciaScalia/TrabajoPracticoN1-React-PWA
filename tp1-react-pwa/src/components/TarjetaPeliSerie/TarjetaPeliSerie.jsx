@@ -21,11 +21,11 @@ const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, ratin
       <p>Tipo: {tipo}</p>
       <p>Estado: {estadoDeVista ? 'Vista' : 'No vista'}</p>
       <div>
-        <Button texto="Editar" onClick={() => { iniciarEdicion(); mostrarFormularioEnApp()}}/>
-        <Button texto="Eliminar" onClick={eliminar}/>
+        <Button texto="Editar" onClick={() => { iniciarEdicion(); mostrarFormularioEnApp(); }} />
+        <Button texto="Eliminar" onClick={eliminar} />
       </div>
     </div>
   );
-}
+};
 
 export default TarjetaPeliSerie;

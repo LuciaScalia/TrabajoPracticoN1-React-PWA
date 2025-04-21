@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormularioEnApp }) {
-  const accion = tarjetaEditando ? "Editar" + " " + tarjetaEditando.titulo : "Agregar";
+  const accion = tarjetaEditando ? "Editar " + tarjetaEditando.titulo : "Agregar";
   const [formData, setFormData] = useState(() => ({
     posterUrl: tarjetaEditando?.posterUrl || '',
     titulo: tarjetaEditando?.titulo || '',

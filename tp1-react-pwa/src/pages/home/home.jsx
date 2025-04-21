@@ -2,7 +2,7 @@ import TarjetaPeliSerie from '../../components/TarjetaPeliSerie/TarjetaPeliSerie
 import ItemForm from '../../components/ItemForm/ItemForm.jsx';
 import Filtre from '../../components/Filtre/Filtre.jsx';
 import { useEffect, useState } from 'react';
-
+import './styles.css';
 
 function Home({ peliculasIniciales }) {
   const [tarjetas, setTarjetas] = useState(() => {
@@ -74,16 +74,18 @@ function Home({ peliculasIniciales }) {
         )}
         </div>
 
-        <div>
-          {mostrarFormulario && 
-          <ItemForm 
-          agregarTarjeta={agregarTarjeta} 
-          editarTarjeta={editarTarjeta} 
-          tarjetaEditando={tarjetaEditando}
-          mostrarFormularioEnApp={mostrarFormularioEnApp}
-          />
-        }
+        {mostrarFormulario && (
+        <div className="itemForm">
+          <div>
+            <ItemForm 
+              agregarTarjeta={agregarTarjeta} 
+              editarTarjeta={editarTarjeta} 
+              tarjetaEditando={tarjetaEditando}
+              mostrarFormularioEnApp={mostrarFormularioEnApp}
+            />
+          </div>
         </div>
+        )}
       </header>
     </div>
   );

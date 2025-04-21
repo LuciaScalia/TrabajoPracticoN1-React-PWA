@@ -22,6 +22,11 @@ function Home({ peliculasIniciales }) {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [modal, setModal] = useState({ visible: false, mensaje: '', onConfirmar: null });
 
+  const esconderModalConfirmacion = () => {
+    setModal({ visible: false, mensaje: '', onConfirmar: null });
+    setTarjetaEditando(null);
+  }
+
   useEffect(() => {
     localStorage.setItem("tarjetas", JSON.stringify(tarjetas));
   }, [tarjetas]);
@@ -105,6 +110,7 @@ function Home({ peliculasIniciales }) {
         editarTarjeta={editarTarjeta} 
         tarjetaEditando={tarjetaEditando}
         mostrarFormularioEnApp={mostrarFormularioEnApp}
+        esconderModalConfirmacion={esconderModalConfirmacion}
       />
     </div>
   </div>

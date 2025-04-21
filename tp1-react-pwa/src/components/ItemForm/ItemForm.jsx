@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormularioEnApp }) {
+function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormularioEnApp, esconderModalConfirmacion }) {
   const accion = tarjetaEditando ? "Editar " + tarjetaEditando.titulo : "Agregar";
   const [formData, setFormData] = useState(() => ({
     posterUrl: tarjetaEditando?.posterUrl || '',
@@ -28,7 +28,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
     });
   };
 
-  const formDataVacio =
+  /*const formDataVacio =
   {
     posterUrl: '',
     titulo: '',
@@ -38,10 +38,10 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
     rating: '',
     tipo: 'Pelicula',
     estadoDeVista: false
-  };
+  };*/
 
   const setValoresVacios = () => {
-    editarTarjeta(formDataVacio);
+    editarTarjeta(null);
   }
 
   const handleSubmit = (e) => {
@@ -51,7 +51,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
     } else {
       agregarTarjeta(formData);
     }
-    setFormData(formDataVacio);
+    setFormData(null);
   };
 
   return (
@@ -65,7 +65,6 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
 
       <label htmlFor="genero">Genero: </label>
       <select name="genero" id="genero" value={formData.genero} onChange={handleChange}>
-        <option value="Todos">Todos</option>
         <option value="Accion">Accion</option>
         <option value="Comedia">Comedia</option>
         <option value="Romance">Romance</option>
@@ -86,7 +85,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
         <input name="estadoDeVista" type="checkbox" checked={formData.estadoDeVista} onChange={handleChange} />
       </label>
       <div>
-        <button type="button" onClick={() => {mostrarFormularioEnApp(); setValoresVacios();}}>Cancelar</button>
+        <button type="button" onClick={() => {mostrarFormularioEnApp(); setValoresVacios(); esconderModalConfirmacion();}}>Cancelar</button>
         <button type="submit">Confirmar</button>
       </div>
     </form>

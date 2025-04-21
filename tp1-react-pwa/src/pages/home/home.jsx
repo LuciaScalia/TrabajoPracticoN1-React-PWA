@@ -3,6 +3,7 @@ import ItemForm from '../../components/ItemForm/ItemForm.jsx';
 import Filtre from '../../components/Filtre/Filtre.jsx';
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal.jsx';
 import { useEffect, useState } from 'react';
+import './styles.css';
 
 
 function Home({ peliculasIniciales }) {
@@ -92,20 +93,22 @@ function Home({ peliculasIniciales }) {
         iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
         mostrarFormularioEnApp={mostrarFormularioEnApp} />
     ))
-        ):(<p>No se encontraron resultados.</p>
-        )}
-        </div>
+  ):(<p>No se encontraron resultados.</p>
+  )}
+  </div>
 
-        <div>
-          {mostrarFormulario && 
-          <ItemForm 
-          agregarTarjeta={agregarTarjeta} 
-          editarTarjeta={editarTarjeta} 
-          tarjetaEditando={tarjetaEditando}
-          mostrarFormularioEnApp={mostrarFormularioEnApp}
-          />
-        }
-        </div>
+  {mostrarFormulario && (
+  <div className="itemForm">
+    <div>
+      <ItemForm 
+        agregarTarjeta={agregarTarjeta} 
+        editarTarjeta={editarTarjeta} 
+        tarjetaEditando={tarjetaEditando}
+        mostrarFormularioEnApp={mostrarFormularioEnApp}
+      />
+    </div>
+  </div>
+  )}
 
         {modal.visible && (
           <ConfirmModal

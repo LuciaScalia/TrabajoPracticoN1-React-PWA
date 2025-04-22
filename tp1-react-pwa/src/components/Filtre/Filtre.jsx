@@ -7,20 +7,21 @@ const Filtre = ({
 }) => {
     return (
         <div>
-            <label htmlFor="seccionGenero">Genero: </label>
+            <label htmlFor="seccionGenero">Género:</label>
             <select id="seccionGenero" value={genero} onChange={(e)=>{setGenero(e.target.value);}}>
                 <option value="Todos">Todos</option>
-                <option value="Accion">Accion</option>
+                <option value="Acción">Acción</option>
                 <option value="Comedia">Comedia</option>
                 <option value="Romance">Romance</option>
-                <option value="Thriller">Suspenso</option>   
+                <option value="Suspenso">Suspenso</option>   
                 <option value="Terror">Terror</option>   
-            </select>
+                <option value="Ciencia Ficción">Ciencia Ficción</option>
+            </select><br/>
             
             <label htmlFor="seccionTipo">Tipo: </label>
             <select id="seccionTipo" value={tipo} onChange={(e)=>{console.log("Tipo seleccionado:", e.target.value); setTipo(e.target.value);}}>
                 <option value="Todos">Todos</option>
-                <option value="Pelicula">Pelicula</option>
+                <option value="Película">Película</option>
                 <option value="Serie">Serie</option>
             </select>
            

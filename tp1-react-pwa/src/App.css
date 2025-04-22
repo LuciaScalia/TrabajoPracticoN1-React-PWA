@@ -32,6 +32,7 @@
     transform: rotate(360deg);
   }
 }
+
 .tarjetas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -57,7 +58,6 @@
   height: auto;
   border-radius: 4px;
 }
-
 
 .PeliSerie p {
   margin: 8px 0;

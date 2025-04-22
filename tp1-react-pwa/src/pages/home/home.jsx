@@ -87,34 +87,31 @@ function Home({ peliculasIniciales }) {
           <button onClick={mostrarFormularioEnApp}>Agregar</button>
         </div>
 
-
         <br /><label>{tarjetasFiltroOrden.length > 0 ? "- Resultados " + tarjetasFiltroOrden.length + " -" : ""}</label><br />
 
-<div className="tarjetas-grid">
-  {tarjetasFiltroOrden.length > 0 ? (
-    tarjetasFiltroOrden.map((tarjeta) => (
-      <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
-        eliminarTarjeta={() => pedirConfirmacion("¿Desea eliminar este ítem?", () => eliminarTarjeta(tarjeta.id))}
-        iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
-        mostrarFormularioEnApp={mostrarFormularioEnApp} />
-    ))
-  ):(<p>No se encontraron resultados.</p>
-  )}
-  </div>
+        <div className="tarjetas-grid">
+          {tarjetasFiltroOrden.length > 0 ? (
+            tarjetasFiltroOrden.map((tarjeta) => (
+              <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
+                eliminarTarjeta={() => pedirConfirmacion("¿Desea eliminar este ítem?", () => eliminarTarjeta(tarjeta.id))}
+                iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
+                mostrarFormularioEnApp={mostrarFormularioEnApp} />
+            ))
+          ):(<p>No se encontraron resultados</p>
+          )}
+        </div>
 
-  {mostrarFormulario && (
-  <div className="itemForm">
-    <div>
-      <ItemForm 
-        agregarTarjeta={agregarTarjeta} 
-        editarTarjeta={editarTarjeta} 
-        tarjetaEditando={tarjetaEditando}
-        mostrarFormularioEnApp={mostrarFormularioEnApp}
-        esconderModalConfirmacion={esconderModalConfirmacion}
-      />
-    </div>
-  </div>
-  )}
+        {mostrarFormulario && (
+        <div className="itemFormHome">
+          <ItemForm 
+            agregarTarjeta={agregarTarjeta} 
+            editarTarjeta={editarTarjeta} 
+            tarjetaEditando={tarjetaEditando}
+            mostrarFormularioEnApp={mostrarFormularioEnApp}
+            esconderModalConfirmacion={esconderModalConfirmacion}
+          />
+        </div>
+        )}
 
         {modal.visible && (
           <ConfirmModal
@@ -123,7 +120,6 @@ function Home({ peliculasIniciales }) {
             onCancelar={() => setModal({ visible: false, mensaje: '', onConfirmar: null })}
           />
         )}
-        
       </header>
     </div>
   );

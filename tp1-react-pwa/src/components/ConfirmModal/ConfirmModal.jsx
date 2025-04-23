@@ -6,7 +6,7 @@ const ConfirmModal = ({ mensaje, onConfirmar, onCancelar }) => {
       <div className="modal">
         <p>{mensaje}</p>
         <div className="modal-buttons">
-          <button className="confirm" onClick={onConfirmar}>Sí</button>
+          <button className="confirm" onClick={onConfirmar}>Confirmar</button>
           <button className="cancel" onClick={onCancelar}>Cancelar</button>
         </div>
       </div>

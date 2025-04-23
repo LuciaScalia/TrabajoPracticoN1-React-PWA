@@ -23,10 +23,22 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
   }, [tarjetaEditando]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === 'estadoDeVista' ? e.target.checked : value,
+    const { name, value, checked } = e.target;
+    //console.log(name);
+    //console.log(value);
+    //console.log(checked);
+    setFormData((prevFormData) => {
+      //console.log(prevFormData)
+        const formDataActualizada = {
+            ...prevFormData,
+            [name]: name === 'estadoDeVista' ? checked : value,
+        };
+
+        if (name === 'estadoDeVista' && !checked) {
+            formDataActualizada.rating = "";
+        }
+
+        return formDataActualizada;
     });
   };
 
@@ -69,9 +81,19 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
           <option value="Serie">Serie</option>
         </select>
 
-        <input name="rating" type="number" placeholder="Rating" min="1" max="10" step="any" value={formData.rating} onChange={handleChange} required />
+        <label>Rating</label>
+        <input name="rating" type="number" 
+        placeholder={formData.estadoDeVista ? "Poner rating" : "Tiene que estar vista para poner rating"}
+        disabled={!formData.estadoDeVista} 
+        min="1" max="10" step="any" 
+        value={formData.rating} 
+        onChange={handleChange} 
+        required />
+
         <label>Estado de Vista</label>
-        <input name="estadoDeVista" type="checkbox" checked={formData.estadoDeVista} onChange={handleChange} />
+        <input name="estadoDeVista" type="checkbox" 
+        checked={formData.estadoDeVista} 
+        onChange={handleChange} />
 
         <div className="botonForm">
           <button type="button" onClick={() => {mostrarFormularioEnApp(); setValoresVacios(); esconderModalConfirmacion();}}>Cancelar</button>

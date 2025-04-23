@@ -17,7 +17,7 @@ const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, ratin
       <p>Director: {director}</p>
       <p>Año: {anio}</p>
       <p>Genero: {genero}</p>
-      <p>Rating: {rating}</p>
+      <p>Rating: {estadoDeVista ? rating : "-"}</p>
       <p>Tipo: {tipo}</p>
       <p>Estado: {estadoDeVista ? 'Vista' : 'No vista'}</p>
       <div>

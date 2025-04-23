@@ -84,23 +84,19 @@ function Home({ peliculasIniciales }) {
       </nav>  
       </header>
       <div className="Home">
+
         <Title titulo="Gestor de Peliculas y Series"/>
-        <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>
           <button onClick={() => setFiltroVista(false)}>No vistas</button>
-          <button onClick={() => setFiltroVista(null)}>Mostrar todas</button> 
-        </div>
+          <button onClick={() => setFiltroVista(null)}>Mostrar todas</button>
+          <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
+        </div><br/>
 
         <label>{tarjetasFiltroOrden.length > 0 ? "- Resultados (" + tarjetasFiltroOrden.length + ") -" : ""}</label>
         
-        
-
         <div className="tarjetas-grid">
-          <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
-        <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
-      
           {tarjetasFiltroOrden.length > 0 ? (
             tarjetasFiltroOrden.map((tarjeta) => (
               <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
@@ -110,6 +106,9 @@ function Home({ peliculasIniciales }) {
             ))
           ):(<p>No se encontraron resultados</p>
           )}
+          <div>
+            <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
+          </div>
         </div>
 
         {mostrarFormulario && (

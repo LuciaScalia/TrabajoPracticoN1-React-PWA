@@ -9,7 +9,7 @@ Una aplicación que funciona como un gestor personal de películas y series.
 ### Cómo usar la App
 
 * **Sin instalación**
-    * Visualizar la página en Vercel → enlace
+    * Visualizar la página en Vercel → https://trabajo-practico-n1-react-pwa-l78b.vercel.app/
 
 * **Con instalación**
 

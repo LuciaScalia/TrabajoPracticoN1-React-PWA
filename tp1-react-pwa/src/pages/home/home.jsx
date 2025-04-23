@@ -78,49 +78,50 @@ function Home({ peliculasIniciales }) {
   return (
     <>
       <header className="App-header">
-      <nav className="navbar">
-        <div>🎬</div>
-        <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
-      </nav>  
+        <nav className="navbar">
+          <div>🎬</div>
+          <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)} />
+        </nav>
       </header>
       <div className="Home">
 
-        <Title titulo="Gestor de Peliculas y Series"/>
+        <Title titulo="Gestor de Peliculas y Series" />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>
           <button onClick={() => setFiltroVista(false)}>No vistas</button>
           <button onClick={() => setFiltroVista(null)}>Mostrar todas</button>
           <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
-        </div><br/>
+        </div><br />
 
         <label>{tarjetasFiltroOrden.length > 0 ? "- Resultados (" + tarjetasFiltroOrden.length + ") -" : ""}</label>
-        
-        <div className="tarjetas-grid">
-          {tarjetasFiltroOrden.length > 0 ? (
-            tarjetasFiltroOrden.map((tarjeta) => (
-              <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
-                eliminarTarjeta={() => pedirConfirmacion("¿Desea eliminar este ítem?", () => eliminarTarjeta(tarjeta.id))}
-                iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
-                mostrarFormularioEnApp={mostrarFormularioEnApp} />
-            ))
-          ):(<p>No se encontraron resultados</p>
-          )}
-          <div>
+        <div className="contenido-principal">
+          <div className="tarjetas-grid">
+            {tarjetasFiltroOrden.length > 0 ? (
+              tarjetasFiltroOrden.map((tarjeta) => (
+                <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
+                  eliminarTarjeta={() => pedirConfirmacion("¿Desea eliminar este ítem?", () => eliminarTarjeta(tarjeta.id))}
+                  iniciarEdicionTarjeta={() => iniciarEdicionTarjeta(tarjeta)}
+                  mostrarFormularioEnApp={mostrarFormularioEnApp} />
+              ))
+            ) : (<p id= "mensaje">No se encontraron resultados</p>
+            )}
+          </div>
+          <div className="filtros-panel" >
             <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
           </div>
         </div>
 
         {mostrarFormulario && (
-        <div className="itemFormHome">
-          <ItemForm 
-            agregarTarjeta={agregarTarjeta} 
-            editarTarjeta={editarTarjeta} 
-            tarjetaEditando={tarjetaEditando}
-            mostrarFormularioEnApp={mostrarFormularioEnApp}
-            esconderModalConfirmacion={esconderModalConfirmacion}
-          />
-        </div>
+          <div className="itemFormHome">
+            <ItemForm
+              agregarTarjeta={agregarTarjeta}
+              editarTarjeta={editarTarjeta}
+              tarjetaEditando={tarjetaEditando}
+              mostrarFormularioEnApp={mostrarFormularioEnApp}
+              esconderModalConfirmacion={esconderModalConfirmacion}
+            />
+          </div>
         )}
 
         {modal.visible && (
@@ -130,7 +131,7 @@ function Home({ peliculasIniciales }) {
             onCancelar={() => setModal({ visible: false, mensaje: '', onConfirmar: null })}
           />
         )}
-    </div>
+      </div>
     </>
   );
 }

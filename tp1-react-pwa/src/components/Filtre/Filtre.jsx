@@ -11,7 +11,7 @@ const Filtre = ({
             <label htmlFor="seccionGenero">Género:</label>
             <select id="seccionGenero" value={genero} onChange={(e)=>{setGenero(e.target.value);}}>
                 <option value="Todos">Todos</option>
-                <option value="Acción">Acción</option>
+                <option value="Accion">Acción</option>
                 <option value="Comedia">Comedia</option>
                 <option value="Romance">Romance</option>
                 <option value="Suspenso">Suspenso</option>   

@@ -82,17 +82,16 @@ function Home({ peliculasIniciales }) {
         <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
       </nav>
       
-      <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>
           <button onClick={() => setFiltroVista(false)}>No vistas</button>
-          <button onClick={() => setFiltroVista(null)}>Mostrar todas</button>
-          <button onClick={mostrarFormularioEnApp}>Agregar</button>
+          <button onClick={() => setFiltroVista(null)}>Mostrar todas</button> 
         </div>
 
-        <br /><label>{tarjetasFiltroOrden.length > 0 ? "- Resultados " + tarjetasFiltroOrden.length + " -" : ""}</label><br />
-
+        <label>{tarjetasFiltroOrden.length > 0 ? "- Resultados (" + tarjetasFiltroOrden.length + ") -" : ""}</label>
+        <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
+        <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
         <div className="tarjetas-grid">
           {tarjetasFiltroOrden.length > 0 ? (
             tarjetasFiltroOrden.map((tarjeta) => (

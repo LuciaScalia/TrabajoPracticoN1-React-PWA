@@ -1,4 +1,4 @@
-import Home from './pages/home/home.jsx';
+import Home from './pages/Home/home.jsx';
 import './App.css';
 
 const peliculasIniciales = [

@@ -1,3 +1,4 @@
+import './styles.css'
 const Filtre = ({
     genero, setGenero,
     tipo, setTipo,
@@ -6,7 +7,7 @@ const Filtre = ({
 
 }) => {
     return (
-        <div>
+        <div className='filtro'>
             <label htmlFor="seccionGenero">Género:</label>
             <select id="seccionGenero" value={genero} onChange={(e)=>{setGenero(e.target.value);}}>
                 <option value="Todos">Todos</option>

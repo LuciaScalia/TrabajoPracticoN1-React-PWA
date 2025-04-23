@@ -8,3 +8,8 @@
     height: 70%;
 }
 
+div.tarjetas-grid{
+    position: relative;
+    right: 120px;
+    width: 1030px;
+}

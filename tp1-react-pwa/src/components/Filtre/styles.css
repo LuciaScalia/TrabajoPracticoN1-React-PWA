@@ -1,0 +1,15 @@
+.filtro{
+    position:fixed;
+    right: 20px;
+    width: 180px;
+    background-color:#222;
+    padding: 20px;
+    top: 80px;
+}
+.filtro select{
+    width: 80px;
+}
+
+label{
+    font-size:large;
+}

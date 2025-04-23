@@ -31,7 +31,7 @@ const peliculasIniciales = [
     director: "Rich Moore",
     anio: 2016,
     genero: "Comedia",
-    rating: 5,
+    rating: "",
     tipo: "Pelicula",
     estadoDeVista: false,
   }

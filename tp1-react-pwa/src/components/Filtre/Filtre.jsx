@@ -21,7 +21,7 @@ const Filtre = ({
             <label htmlFor="seccionTipo">Tipo: </label>
             <select id="seccionTipo" value={tipo} onChange={(e)=>{console.log("Tipo seleccionado:", e.target.value); setTipo(e.target.value);}}>
                 <option value="Todos">Todos</option>
-                <option value="Película">Película</option>
+                <option value="Pelicula">Película</option>
                 <option value="Serie">Serie</option>
             </select>
            

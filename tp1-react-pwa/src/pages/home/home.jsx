@@ -77,8 +77,12 @@ function Home({ peliculasIniciales }) {
   return (
     <div className="Home">
       <header className="App-header">
-        <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
-        <input type='text' placeholder='Busqueda' value={busqueda} onChange={(e) => setBusqueda(e.target.value)} />
+      <nav className="navbar">
+        <div>🎬 Pelis y Series</div>
+        <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
+      </nav>
+      
+      <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>

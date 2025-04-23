@@ -37,6 +37,8 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
         if (name === 'estadoDeVista' && !checked) {
             formDataActualizada.rating = "";
         }
+        
+        localStorage.setItem('formData', JSON.stringify(formDataActualizada));
 
         return formDataActualizada;
     });

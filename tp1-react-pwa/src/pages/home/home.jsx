@@ -1,6 +1,7 @@
 import TarjetaPeliSerie from '../../components/TarjetaPeliSerie/TarjetaPeliSerie.jsx';
 import ItemForm from '../../components/ItemForm/ItemForm.jsx';
 import Filtre from '../../components/Filtre/Filtre.jsx';
+import Title from '../../components/title/title.jsx';
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal.jsx';
 import { useEffect, useState } from 'react';
 import './styles.css';
@@ -78,10 +79,11 @@ function Home({ peliculasIniciales }) {
     <div className="Home">
       <header className="App-header">
       <nav className="navbar">
-        <div>🎬 Pelis y Series</div>
+        <div>🎬</div>
         <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
       </nav>
-      
+      <Title titulo="Gestor de Peliculas y Series"/>
+      <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>

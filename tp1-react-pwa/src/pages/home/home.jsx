@@ -76,14 +76,16 @@ function Home({ peliculasIniciales }) {
   };
 
   return (
-    <div className="Home">
+    <>
       <header className="App-header">
       <nav className="navbar">
         <div>🎬</div>
         <input className="navbar-search" type="text" placeholder="Buscar por título o director..." value={busqueda} onChange={(e) => setBusqueda(e.target.value)}/>
-      </nav>
-      <Title titulo="Gestor de Peliculas y Series"/>
-      <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
+      </nav>  
+      </header>
+      <div className="Home">
+        <Title titulo="Gestor de Peliculas y Series"/>
+        <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
 
         <div>
           <button onClick={() => setFiltroVista(true)}>Vistas</button>
@@ -92,9 +94,13 @@ function Home({ peliculasIniciales }) {
         </div>
 
         <label>{tarjetasFiltroOrden.length > 0 ? "- Resultados (" + tarjetasFiltroOrden.length + ") -" : ""}</label>
-        <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
-        <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
+        
+        
+
         <div className="tarjetas-grid">
+          <Filtre {...{ tipo, setTipo, genero, setGenero, orden, setOrden, ascdesc, setAscDesc }} />
+        <button className='Agregar' onClick={mostrarFormularioEnApp}>Agregar</button>
+      
           {tarjetasFiltroOrden.length > 0 ? (
             tarjetasFiltroOrden.map((tarjeta) => (
               <TarjetaPeliSerie key={tarjeta.id} {...tarjeta}
@@ -125,8 +131,8 @@ function Home({ peliculasIniciales }) {
             onCancelar={() => setModal({ visible: false, mensaje: '', onConfirmar: null })}
           />
         )}
-      </header>
     </div>
+    </>
   );
 }
 

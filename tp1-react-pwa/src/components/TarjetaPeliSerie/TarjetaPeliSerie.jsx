@@ -1,4 +1,4 @@
-import Button from '../button/button'
+import Button from '../Button/Button'
 import './styles.css';
 
 const TarjetaPeliSerie = ({ id, posterUrl, titulo, director, anio, genero, rating, tipo, estadoDeVista, eliminarTarjeta, iniciarEdicionTarjeta, mostrarFormularioEnApp }) => {

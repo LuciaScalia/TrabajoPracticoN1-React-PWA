@@ -4,7 +4,7 @@ Una aplicación que funciona como un gestor personal de películas y series.
 ### Grupo N°21
 * Scalia Damaris Lucia [FAI-4235]
 * Carrasco Nadia Rocio [FAI-4236]
-* Baroiza Santiago [FAI-2594]
+* Beroiza Santiago [FAI-2594]
 
 ### Cómo usar la App
 

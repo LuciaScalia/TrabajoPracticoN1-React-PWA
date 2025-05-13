@@ -6,7 +6,7 @@ import ConfirmModal from '../../components/ConfirmModal/ConfirmModal.jsx';
 import { useEffect, useState } from 'react';
 import './styles.css';
 
-
+// El nombre del archivo deberia estar en mayuscula
 function Home({ peliculasIniciales }) {
   const [tarjetas, setTarjetas] = useState(() => {
     const tarjetasLocal = localStorage.getItem("tarjetas");

@@ -1,3 +1,17 @@
+Correcciones:
+
+- Cumple con todas las funcionalidades pedidas.
+- Buen codigo. Bien estructurado, facil de leer.
+- Buen uso de local storage.
+- Buen uso de useState y useEffect.
+- Linda UI.
+
+Observaciones:
+- Borren codigo comentado antes de entregar.
+- Los nombres de los archivos que son componentes/pages deberian estar en mayuscula
+
+Nota: 10
+
 # TrabajoPracticoN1-React-PWA
 Una aplicación que funciona como un gestor personal de películas y series.
 

@@ -24,6 +24,7 @@ function ItemForm({ agregarTarjeta, editarTarjeta, tarjetaEditando, mostrarFormu
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
+    // borrar antes de entregar
     //console.log(name);
     //console.log(value);
     //console.log(checked);
